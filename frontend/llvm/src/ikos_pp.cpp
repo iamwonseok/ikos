@@ -44,6 +44,7 @@
 
 #include <boost/filesystem.hpp>
 
+#include <llvm/InitializePasses.h>
 #include <llvm/ADT/StringSet.h>
 #include <llvm/Bitcode/BitcodeWriterPass.h>
 #include <llvm/IR/LLVMContext.h>
