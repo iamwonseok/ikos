@@ -44,7 +44,6 @@
 
 #include <boost/filesystem.hpp>
 
-#include <llvm/InitializePasses.h>
 #include <llvm/ADT/StringSet.h>
 #include <llvm/Bitcode/BitcodeWriterPass.h>
 #include <llvm/IR/LLVMContext.h>
@@ -53,6 +52,7 @@
 #include <llvm/IR/Module.h>
 #include <llvm/IR/Verifier.h>
 #include <llvm/IRReader/IRReader.h>
+#include <llvm/InitializePasses.h>
 #include <llvm/LinkAllPasses.h>
 #include <llvm/Support/CommandLine.h>
 #include <llvm/Support/Debug.h>

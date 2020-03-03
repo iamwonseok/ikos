@@ -177,7 +177,7 @@ inline JsonString to_json(std::string s) {
 
 /// \brief Convert strings to JsonString
 inline JsonString to_json(llvm::StringRef s) {
-    return JsonString(std::move(s.str()));
+  return JsonString(std::move(s.str()));
 }
 
 /// \brief Convert strings to JsonString

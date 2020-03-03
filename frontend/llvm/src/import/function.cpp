@@ -1540,7 +1540,8 @@ ar::IntegerConstant* FunctionImporter::translate_indexes(
       offset += element_size * idx;
 #elif defined(LLVM_VERSION_MAJOR) && (LLVM_VERSION_MAJOR == 9)
       ar::ZNumber element_size(
-          this->_llvm_data_layout.getTypeAllocSize(seq_type->getElementType()).getFixedSize());
+          this->_llvm_data_layout.getTypeAllocSize(seq_type->getElementType())
+              .getFixedSize());
       offset += element_size * idx;
 #endif
     } else {
@@ -1580,8 +1581,10 @@ void FunctionImporter::translate_extractelement(
   ar::ZNumber element_size(this->_llvm_data_layout.getTypeAllocSize(
       inst->getVectorOperandType()->getElementType()));
 #elif defined(LLVM_VERSION_MAJOR) && (LLVM_VERSION_MAJOR > 9)
-  ar::ZNumber element_size(this->_llvm_data_layout.getTypeAllocSize(
-      inst->getVectorOperandType()->getElementType()).getFixedSize());
+  ar::ZNumber element_size(
+      this->_llvm_data_layout
+          .getTypeAllocSize(inst->getVectorOperandType()->getElementType())
+          .getFixedSize());
 #endif
   ar::ZNumber offset_value = index->getZExtValue() * element_size;
   auto offset = ar::IntegerConstant::get(this->_context,
@@ -1617,8 +1620,10 @@ void FunctionImporter::translate_insertelement(
   ar::ZNumber element_size(this->_llvm_data_layout.getTypeAllocSize(
       inst->getType()->getElementType()));
 #elif defined(LLVM_VERSION_MAJOR) && (LLVM_VERSION_MAJOR > 9)
-  ar::ZNumber element_size(this->_llvm_data_layout.getTypeAllocSize(
-      inst->getType()->getElementType()).getFixedSize());
+  ar::ZNumber element_size(
+      this->_llvm_data_layout
+          .getTypeAllocSize(inst->getType()->getElementType())
+          .getFixedSize());
 #endif
   ar::ZNumber offset_value = index->getZExtValue() * element_size;
   auto offset = ar::IntegerConstant::get(this->_context,

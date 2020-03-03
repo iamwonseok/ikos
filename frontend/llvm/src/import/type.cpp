@@ -146,10 +146,12 @@ void TypeWithSignImporter::sanity_check_size(llvm::Type* llvm_type,
                    this->_ar_data_layout.alloc_size_in_bytes(ar_type),
                "llvm type and ar type alloc size are different");
 #elif defined(LLVM_VERSION_MAJOR) && (LLVM_VERSION_MAJOR > 9)
-  check_import(this->_llvm_data_layout.getTypeSizeInBits(llvm_type).getFixedSize() >=
+  check_import(this->_llvm_data_layout.getTypeSizeInBits(llvm_type)
+                       .getFixedSize() >=
                    this->_ar_data_layout.size_in_bits(ar_type),
                "llvm type size in bits is smaller than ar type size");
-  check_import(this->_llvm_data_layout.getTypeAllocSize(llvm_type).getFixedSize() ==
+  check_import(this->_llvm_data_layout.getTypeAllocSize(llvm_type)
+                       .getFixedSize() ==
                    this->_ar_data_layout.alloc_size_in_bytes(ar_type),
                "llvm type and ar type alloc size are different");
 #endif
@@ -427,10 +429,12 @@ void TypeWithDebugInfoImporter::sanity_check_size(llvm::Type* llvm_type,
                    this->_ar_data_layout.alloc_size_in_bytes(ar_type),
                "llvm type and ar type alloc size are different");
 #elif defined(LLVM_VERSION_MAJOR) && (LLVM_VERSION_MAJOR > 9)
-  check_import(this->_llvm_data_layout.getTypeSizeInBits(llvm_type).getFixedSize() >=
+  check_import(this->_llvm_data_layout.getTypeSizeInBits(llvm_type)
+                       .getFixedSize() >=
                    this->_ar_data_layout.size_in_bits(ar_type),
                "llvm type size in bits is smaller than ar type size");
-  check_import(this->_llvm_data_layout.getTypeAllocSize(llvm_type).getFixedSize() ==
+  check_import(this->_llvm_data_layout.getTypeAllocSize(llvm_type)
+                       .getFixedSize() ==
                    this->_ar_data_layout.alloc_size_in_bytes(ar_type),
                "llvm type and ar type alloc size are different");
 #endif

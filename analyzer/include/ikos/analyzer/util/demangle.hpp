@@ -101,6 +101,5 @@ inline std::string demangle(llvm::StringRef name) {
   return demangle(name.str());
 }
 
-
 } // end namespace analyzer
 } // end namespace ikos
